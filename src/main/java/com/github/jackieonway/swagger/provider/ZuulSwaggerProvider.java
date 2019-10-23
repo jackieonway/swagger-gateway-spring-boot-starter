@@ -16,7 +16,7 @@ import static com.github.jackieonway.swagger.utils.SwaggerUtil.swaggerResource;
 /**
  * @author Jackie
  */
-@Profile("default")
+@Profile({"default","dev"})
 public class ZuulSwaggerProvider implements SwaggerResourcesProvider {
 
     private static final String API_URI = "/v2/api-docs";
