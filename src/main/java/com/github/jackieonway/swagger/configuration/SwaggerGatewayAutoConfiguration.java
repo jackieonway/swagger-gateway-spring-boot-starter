@@ -22,6 +22,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -56,9 +57,12 @@ public class SwaggerGatewayAutoConfiguration {
                 // 因为这个字段事 private final 修饰，所以要打开权限
                 hField.setAccessible(true);
                 // 获取 memberValues
-                Map memberValues = (Map) hField.get(h);
+                Map<String,String[]> memberValues = (Map<String,String[]>) hField.get(h);
+                String[] values = memberValues.get("value");
+                Collections.addAll(profiles, values);
+                String[] strings = new String[profiles.size()];
                 // 修改 value 属性值
-                memberValues.put("value", profiles.toArray());
+                memberValues.put("value", profiles.toArray(strings));
             }
             return zuulSwaggerProvider;
         }
@@ -84,9 +88,12 @@ public class SwaggerGatewayAutoConfiguration {
                 // 因为这个字段事 private final 修饰，所以要打开权限
                 hField.setAccessible(true);
                 // 获取 memberValues
-                Map memberValues = (Map) hField.get(h);
+                Map<String,String[]> memberValues = (Map<String,String[]>) hField.get(h);
+                String[] values = memberValues.get("value");
+                Collections.addAll(profiles, values);
+                String[] strings = new String[profiles.size()];
                 // 修改 value 属性值
-                memberValues.put("value", profiles.toArray());
+                memberValues.put("value", profiles.toArray(strings));
             }
             return gatewaySwaggerProvider;
         }
