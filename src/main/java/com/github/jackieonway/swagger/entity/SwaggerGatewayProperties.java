@@ -15,9 +15,15 @@ import java.util.List;
 @ConfigurationProperties("spring.jackieonway.swagger.gateway")
 public class SwaggerGatewayProperties {
 
+    /**
+     *  swagger profiles ; notice : this param is invalid
+     */
     private List<String> profiles;
 
-    private String version;
+    /**
+     *  swagger interface version default 1.0
+     */
+    private String version = "1.0";
 
     public List<String> getProfiles() {
         return profiles;

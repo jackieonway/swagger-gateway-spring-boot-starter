@@ -37,6 +37,12 @@
             <version>${boot.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <version>${boot.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
             <version>${cloud.version}</version>
