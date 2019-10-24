@@ -7,6 +7,7 @@
     <version>0.0.1</version>
     <name>swagger-gateway-spring-boot-starter</name>
     <description>Swagger Gateway project for Spring Boot</description>
+    <url>https://github.com/jackieonway</url>
 
     <properties>
         <java.version>1.8</java.version>
