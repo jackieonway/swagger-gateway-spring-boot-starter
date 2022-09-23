@@ -4,6 +4,7 @@ import com.github.jackieonway.swagger.entity.SwaggerGatewayProperties;
 import org.springframework.cloud.netflix.zuul.filters.RouteLocator;
 import org.springframework.cloud.netflix.zuul.filters.ZuulProperties;
 import org.springframework.context.annotation.Profile;
+import springfox.documentation.oas.annotations.EnableOpenApi;
 import springfox.documentation.swagger.web.SwaggerResource;
 import springfox.documentation.swagger.web.SwaggerResourcesProvider;
 
@@ -16,10 +17,11 @@ import static com.github.jackieonway.swagger.utils.SwaggerUtil.swaggerResource;
 /**
  * @author Jackie
  */
+@EnableOpenApi
 @Profile({"default","dev"})
 public class ZuulSwaggerProvider implements SwaggerResourcesProvider {
 
-    private static final String API_URI = "/v2/api-docs";
+    private static final String API_URI = "/v3/api-docs";
     //RouteLocator可以根据zuul配置的路由列表获取服务
     private final RouteLocator routeLocator;
 

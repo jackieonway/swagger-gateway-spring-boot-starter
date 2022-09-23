@@ -4,16 +4,16 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.jackieonway</groupId>
     <artifactId>swagger-gateway-spring-boot-starter</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <name>swagger-gateway-spring-boot-starter</name>
     <description>Swagger Gateway project for Spring Boot</description>
     <url>https://github.com/jackieonway</url>
 
     <properties>
         <java.version>1.8</java.version>
-        <boot.version>2.0.6.RELEASE</boot.version>
-        <cloud.version>2.1.3.RELEASE</cloud.version>
-        <swagger.version>2.9.2</swagger.version>
+        <boot.version>2.6.7</boot.version>
+        <cloud.version>2.2.3.RELEASE</cloud.version>
+        <swagger.version>3.0.0</swagger.version>
         <java.encoding>utf-8</java.encoding>
         <encoding>UTF-8</encoding>
         <maven.compile.version>3.7.0</maven.compile.version>
@@ -52,13 +52,13 @@
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
+            <artifactId>springfox-boot-starter</artifactId>
             <version>${swagger.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${swagger.version}</version>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+            <version>3.0.3</version>
         </dependency>
     </dependencies>
 
