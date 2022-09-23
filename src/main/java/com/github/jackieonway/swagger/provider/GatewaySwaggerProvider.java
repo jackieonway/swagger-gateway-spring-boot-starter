@@ -6,9 +6,9 @@ import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.support.NameUtils;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
+import springfox.documentation.oas.annotations.EnableOpenApi;
 import springfox.documentation.swagger.web.SwaggerResource;
 import springfox.documentation.swagger.web.SwaggerResourcesProvider;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +17,11 @@ import static com.github.jackieonway.swagger.utils.SwaggerUtil.swaggerResource;
 /**
  * @author Jackie
  */
-@EnableSwagger2
+@EnableOpenApi
 @Profile({"default","dev"})
 @Primary
 public class GatewaySwaggerProvider implements SwaggerResourcesProvider {
-    public static final String API_URI = "/v2/api-docs";
+    public static final String API_URI = "/v3/api-docs";
     private final RouteLocator routeLocator;
     private final GatewayProperties gatewayProperties;
     private final SwaggerGatewayProperties swaggerGatewayProperties;
