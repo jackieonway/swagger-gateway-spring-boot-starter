@@ -5,6 +5,7 @@
 package com.github.jackieonway.swagger.entity;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.NestedConfigurationProperty;
 
 import java.util.List;
 
@@ -19,6 +20,12 @@ public class SwaggerGatewayProperties {
      *  swagger profiles ; notice : this param is invalid
      */
     private List<String> profiles;
+
+    /**
+     * swagger routes, if config this , the swagger definition will be with this name
+     */
+    @NestedConfigurationProperty
+    private List<CloudRoute> routes;
 
     /**
      *  swagger interface version default 1.0
@@ -39,5 +46,13 @@ public class SwaggerGatewayProperties {
 
     public void setVersion(String version) {
         this.version = version;
+    }
+
+    public List<CloudRoute> getRoutes() {
+        return routes;
+    }
+
+    public void setRoutes(List<CloudRoute> routes) {
+        this.routes = routes;
     }
 }

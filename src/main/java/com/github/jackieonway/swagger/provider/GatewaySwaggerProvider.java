@@ -46,7 +46,7 @@ public class GatewaySwaggerProvider implements SwaggerResourcesProvider {
                         .filter(predicateDefinition -> ("Path").equalsIgnoreCase(predicateDefinition.getName()))
                         .forEach(predicateDefinition -> resources.add(swaggerResource(routeDefinition.getId(),
                                 predicateDefinition.getArgs().get(NameUtils.GENERATED_NAME_PREFIX + "0")
-                                        .replace("/**", API_URI),swaggerGatewayProperties.getVersion()))));
+                                        .replace("/**", API_URI),swaggerGatewayProperties.getVersion(), swaggerGatewayProperties.getRoutes()))));
         return resources;
     }
 }

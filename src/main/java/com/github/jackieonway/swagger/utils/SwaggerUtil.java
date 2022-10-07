@@ -4,7 +4,13 @@
  */
 package com.github.jackieonway.swagger.utils;
 
+import com.github.jackieonway.swagger.entity.CloudRoute;
+import org.springframework.util.CollectionUtils;
 import springfox.documentation.swagger.web.SwaggerResource;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author Jackie
@@ -14,9 +20,18 @@ public class SwaggerUtil {
 
     private SwaggerUtil(){}
 
-    public static SwaggerResource swaggerResource(String name, String location, String version) {
+    public static SwaggerResource swaggerResource(String name, String location, String version, List<CloudRoute> routes) {
         SwaggerResource swaggerResource = new SwaggerResource();
-        swaggerResource.setName(name);
+        if (CollectionUtils.isEmpty(routes)){
+            swaggerResource.setName(name);
+        }else {
+            routes.forEach(route -> {
+                if (Objects.equals(route.getId(), name)){
+                    swaggerResource.setName(route.getName());
+                }
+            });
+        }
+
         swaggerResource.setLocation(location);
         swaggerResource.setSwaggerVersion(version);
         return swaggerResource;

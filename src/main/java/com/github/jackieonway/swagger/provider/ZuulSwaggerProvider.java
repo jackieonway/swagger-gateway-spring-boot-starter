@@ -49,7 +49,7 @@ public class ZuulSwaggerProvider implements SwaggerResourcesProvider {
                 .filter(zuulRoute -> routes.contains(zuulRoute.getValue().getId()))
                 .forEach(zuulRoute -> resources.add(swaggerResource(zuulRoute.getKey(),
                         zuulRoute.getValue().getPath().replace("/**", API_URI),
-                        swaggerGatewayProperties.getVersion())));
+                        swaggerGatewayProperties.getVersion(), swaggerGatewayProperties.getRoutes())));
         return resources;
     }
 }
