@@ -1,5 +1,6 @@
 package com.github.jackieonway.swagger.provider;
 
+import com.github.jackieonway.swagger.constants.SwaggerConstants;
 import com.github.jackieonway.swagger.entity.SwaggerGatewayProperties;
 import org.springframework.cloud.gateway.config.GatewayProperties;
 import org.springframework.cloud.gateway.route.RouteLocator;
@@ -21,7 +22,6 @@ import static com.github.jackieonway.swagger.utils.SwaggerUtil.swaggerResource;
 @Profile({"default","dev"})
 @Primary
 public class GatewaySwaggerProvider implements SwaggerResourcesProvider {
-    public static final String API_URI = "/v3/api-docs";
     private final RouteLocator routeLocator;
     private final GatewayProperties gatewayProperties;
     private final SwaggerGatewayProperties swaggerGatewayProperties;
@@ -38,7 +38,7 @@ public class GatewaySwaggerProvider implements SwaggerResourcesProvider {
     public List<SwaggerResource> get() {
         List<SwaggerResource> resources = new ArrayList<>();
         List<String> routes = new ArrayList<>();
-        //取出gateway的route
+        //obtain gateway route
         routeLocator.getRoutes().subscribe(route -> routes.add(route.getId()));
         //结合配置的route-路径(Path)，和route过滤，只获取有效的route节点
         gatewayProperties.getRoutes().stream().filter(routeDefinition -> routes.contains(routeDefinition.getId()))
@@ -46,7 +46,8 @@ public class GatewaySwaggerProvider implements SwaggerResourcesProvider {
                         .filter(predicateDefinition -> ("Path").equalsIgnoreCase(predicateDefinition.getName()))
                         .forEach(predicateDefinition -> resources.add(swaggerResource(routeDefinition.getId(),
                                 predicateDefinition.getArgs().get(NameUtils.GENERATED_NAME_PREFIX + "0")
-                                        .replace("/**", API_URI),swaggerGatewayProperties.getVersion(), swaggerGatewayProperties.getRoutes()))));
+                                        .replace(SwaggerConstants.ANY_MATCH_PATH, SwaggerConstants.API_URI_V3),
+                                swaggerGatewayProperties.getVersion(), swaggerGatewayProperties.getRoutes()))));
         return resources;
     }
 }
