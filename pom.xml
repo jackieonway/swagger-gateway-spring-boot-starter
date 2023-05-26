@@ -11,7 +11,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <boot.version>2.6.7</boot.version>
+        <boot.version>2.6.15</boot.version>
         <cloud.version>2.2.3.RELEASE</cloud.version>
         <swagger.version>3.0.0</swagger.version>
         <java.encoding>utf-8</java.encoding>
